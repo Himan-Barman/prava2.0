@@ -1,0 +1,17 @@
+{
+  "name": "prava-monorepo",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "setup": "npm run install:all && npm run env:setup",
+    "install:all": "concurrently \"cd backend && npm install\" \"cd frontend && npm install\"",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "build": "concurrently \"cd backend && npm run build\" \"cd frontend && npm run build\"",
+    "lint": "concurrently \"cd backend && npm run lint\" \"cd frontend && npm run lint\"",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

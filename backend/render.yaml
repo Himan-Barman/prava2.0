@@ -1,0 +1,24 @@
+services:
+  # 🚀 BACKEND SERVICE
+  - type: web
+    name: prava-backend
+    env: node
+    plan: free # Upgrade to 'starter' for production
+    rootCommand: cd backend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    autoDeploy: true
+
+  # ⚙️ BACKGROUND WORKER (BullMQ)
+  # Uncomment this when you deploy the Worker/Queue module
+  # - type: worker
+  #   name: prava-worker
+  #   env: node
+  #   rootCommand: cd backend
+  #   buildCommand: npm install && npm run build
+  #   startCommand: node dist/jobs/worker.js
